@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{lipsum}
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm, fouriernc, mathtools}
+% mathtools for: Aboxed (put box on last equation in align envirenment)
+\usepackage{microtype} %improves the spacing between words and letters
+
+\usepackage{graphicx}
+\graphicspath{ {./pics/} {./eps/}}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{wasysym}
+\usepackage{color, colortbl}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COLOR DEFINITIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[svgnames]{xcolor} % Enabling mixing colors and color's call by 'svgnames'
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\newcommand{\red}{\color{LightCoral} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\green}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FONTS AND COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    SECTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec}
+\usepackage{sectsty}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%set section/subsections HEADINGS font and color
+\sectionfont{\color{MyColor1}}  % sets colour of sections
+\subsectionfont{\color{MyColor1}}  % sets colour of sections
+
+%set section enumerator to arabic number (see footnotes markings alternatives)
+\renewcommand\thesection{\arabic{section}.} %define sections numbering
+\renewcommand\thesubsection{\thesection\arabic{subsection}} %subsec.num.
+
+%define new section style
+\newcommand{\mysection}{
+\titleformat{\section} [runin] {\usefont{OT1}{lmss}{b}{n}\color{MyColor1}} 
+{\thesection} {3pt} {} } 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		CAPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{caption}
+\usepackage{subcaption}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%\captionsetup[figure]{labelfont={color=Black}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		!!!EQUATION (ARRAY) --> USING ALIGN INSTEAD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%using amsmath package to redefine eq. numeration (1.1, 1.2, ...) 
+%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+
+%set box background to grey in align environment 
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+\patchcmd{\@Aboxed}{\boxed{#1#2}}{\colorbox{black!15}{$#1#2$}}{}{}%
+\patchcmd{\@boxed}{\boxed{#1#2}}{\colorbox{black!15}{$#1#2$}}{}{}%
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DESIGN CIRCUITS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[siunitx, american, smartlabels, cute inductors, europeanvoltages]{circuitikz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{red}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\usepackage{hypcap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREPARE TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\blue EMERALD SPEEDRUN GUIDE \\
+\blueb Mudkip 1026 Strategy}
+\author{Dimitri Haas}
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\maketitle
+%\tableofcontents
+
+\section{Einführung}{%
+\subsection{Vorwort}{
+\label{sec:preface}
+Mit diesem Guide hälst du ein vollständiges und umfangreiches Nachschlagewerk in den Händen, um Speedruns auf Weltrekord-Niveau zu absolvieren.
+Darüber hinaus stehen zusätzliche Informationen zur Verfügung, die für eigene Strategien und Times Safes herangezogen werden können. Besonders wertvoll sind hierbei im Anhang befindliche Schadenstabellen und die Möglichkeit diese mit verschiedenen Parametern gegenüberzustellen. 
+
+Desweiteren stelle ich dir zwei Beispielwege vor, von denen du am besten zu Beginn einen auswählst und diesen versuchst in einer ordentlichen Zeit abzulaufen. Erst anschließend solltest du dich zur tieferen Analyse vorwagen.
+Als kleine Anregung darf man an dieser Stelle anmerken, dass die kürzesten Zeiten sehr jung sind – und bis heute nach wie vor gut geschlagen werden können.
+
+Als weiteren Tipp solltest du aufgezeichnete Runs von Spitzenspielern anschauen, um grundlegende Abkürzungen sowie Lauf- bzw. Fahrwege kennenzulernen.%
+%%% END UBSECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Strategie}{
+\label{sec:strategy_explanation}
+Die grundlegende Strategie dieses Runs ist ein schneller Durchlauf mit dem zu Beginn erhaltenen \textsc{Hydropi} als kämpfendes Pokemon. Dazu ist es wichtig mit einem ganz bestimmten Exemplar zu starten -- einem, welches man auf dem 1026. Frame erhält. (Was das genau bedeutet, lernst du in~\ref{sec:correct_mudkip}) Dieses \textsc{Hydropi} besitzt hohe IV-Were auf den für uns wichtigen Attributen. Wir behalten es stets an erster Stelle und kämpfen damit praktisch exklusiv, bis an einem weit fortgeschrittenem Spielstand ein einmaliger Wechsel stattfindet.
+
+Während des Runs wird vorrangig mithilfe von Schutz das Antreffen von wilden Pokemon vermieden sowie langwierigen Trainern mit einigen Kniffen aus dem Weg gegangen. Wie bei einem Speedrun üblich werden auf dem Boden liegende Items nur aufgenommen, wenn diese benötigt werden. Essentiell dagegen sind gekaufte Items aus dem Supermarkt. Dazu zählen vor allem Tränke und Kampfitems, welche temporär den Angriff und die Geschwindigkeit steigern.
+%%% END SUBSECTION 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Das richtige \textsc{Hydropi}}{
+\label{sec:correct_mudkip}
+Was genau ist mit dem 1026ten Frame gemeint? In \textsc{Pokemon Smaragd} funktioniert der Zufallsgenerator nach einem sehr einfachen Prinzip: Sobald die Konsole neugestartet und das Spiel geladen wird, beginnt der Zufallsgenerator pseudozufällige Zahlen zu generieren. Das Besondere bei \textsc{Smaragd} hierbei ist, dass der Seed (sozusagen der Ausgangspunkt) stets der gleiche ist. Das heißt, wir erhalten für einen bestimmten Frame auch immer die gleichen generierten Zahlen in der selben Reihenfolge und damit auch immer das gleiche \textsc{Hydropi}. Um dieser ernüchternden Gegebenheit entgegenzuwirken, ist die Frequenz jeder Generierungsphase sehr hoch -- etwa 60 Mal pro Sekunde. Eine einzige Phase wird  \textsc{Frame} genannt. Jeder Frame enthält alle benötigten Zahlen, um sämtliche Zufalls-Ereignisse des Spiels zu berechnen. Weiterführende Informationen lassen sich unter \href{http://www.smogon.com/ingame/rng/emerald_rng_intro}{Emerald RNG Intro} auf der weltbekannten Smogon-Website nachlesen.
+
+
+Die Werte unseres gefragten Exemplars werden im 1026ten Frame erzeugt und können Tabelle~\ref{tab:mudkip_ivs} entnommen werden. Dazu muss nach umgerechnet $17.1~\si{\second}$ die Textbox, welche die Auswahl des Starterpkmm festlegt, mit \textsc{Ja} beantwortet werden.
+
+\begin{table}[htb]
+	\caption{IV Werte}
+	\label{tab:mudkip_ivs}
+	\centering
+	\begin{tabular}{lcccccc}
+		\toprule
+		&\textbf{Hp}	&\textbf{Atk}&\textbf{Def}&\textbf{SpA}&\textbf{SpD}	&\textbf{Spe} \\
+		\midrule
+			\textbf{IV}		&21		&23		&28		&30		&30		&29		\\
+			\textbf{Stats}	&21		&14		&11		&11		&9		&10		\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+ 
+Da es sich hier um Sekundenbruchteile handelt, ist der korrekte Frame anfangs schwer zu treffen. Abhilfe verschaffen hier bestimmte Timer, welche auch mit Audiosignalen das Timing deutlich vereinfachen:
+
+\begin{itemize}
+\item Windows: \href{https://bitbucket.org/ToastPlusOne/eontimer/downloads/EonTimer-1_6.1.zip}{Eon Timer}
+\item Mac: \href{https://www.dropbox.com/s/aurp9y34j5rdbhv/ZomgTimer-V2_21.jar#}{Zomg Timer}
+\end{itemize}
+
+\paragraph{Bedienung}
+Mit \textsc{Mode > Emerald} wird die richtige Spielversion eingestellt. Für den Anfang ist \textsc{Target Frame} auf 1026 und \textsc{Seconds Before} vorschlagsweise auf 5 Sekunden einzustellen. Die Spielfigur muss direkt vor Prof. Bricks Tasche poisitioniert werden und durch Drücken der Leertaste wird die 5-sekündige vorbereitende Phase des Timers aktiviert, welche nach Ablauf mit einem Softreset der Konsole beantwortet werden muss. Die zweite Timerphase läuft automatisch an und dauert je nach Kalibierung zwischen $17.0$ und $17.2$ Sekunden. Nun tippt man sich so schnell es geht wieder in den geladenen Spielstand und lässt die Spielfigur des Professors Tasche öffnen, um das \textsc{Hydropi} und die entsprechende Textbox zu öffnen. Die endgütige Auswahl des Starterpokemons geschieht mit einem Klick auf \textsc{Ja}. Dieser Klick sollte exakt dann erfolgen, wenn die zweite Phase des Timer ausläuft.
+
+Die Erfolgschance kann durch Kalibrierung des Timers wesentlich gesteigert werden, um persönliche und technische Latenzen auszugleichen. Dazu werden die Werte des getroffenen \textsc{Hydropi} in folgendes Javaprogramm geschrieben
+
+\begin{itemize}
+\item Java (OS independant): \href{https://www.speedrun.com/tools/MudkipPredictorv4_thv6k.jar}{Mudkip Predictor}
+\end{itemize}
+
+\paragraph{Bedienung}
+Im Kampfbildschirm werden Geschlechter und der KP-Stand unseres kämpfenden Pokemon abgelesen. Diese beiden Informationen können durch Abgleich mit Tabelle \ref{tab:mudkip_frames} zur schnellen Frame-Bestimmung herangezogen werden. Um sicherzugehen sollte man aber zusätzlich noch die Status-Werte im Info-Bildschirm des Pokemons durch Abgleich überprüfen.
+
+Stimmt das gefundene \textsc{Hydropi} mit keinem aus der Tabelle überein, sollte man eigenhändig mithilfe des obigen Programms den getroffenen Frame bestimmen. Dazu gibt man das Wesen und die Statuswerte in das Programm ein. Als \textsc{Start Frame} bietet sich 1000 und als \textsc{End Frame} 1100 an. Als Ergebnis gibt das Programm den genauen Frame des getroffenen \textsc{Hydropi} aus. Nach weiteren solcher Stichproben kann man das Zielframe entsprechend korrigieren.
+
+\definecolor{Gray}{gray}{0.9}
+\begin{table}[htb]
+	\caption{Mudkip Manipulation Frames}
+	\label{tab:mudkip_frames}
+	\centering
+	\begin{tabular}{clcccccccc}
+		\toprule
+		& & \multicolumn{2}{c}{\textbf{Gender}}	& \multicolumn{6}{c}{\textbf{Stats}}					\\
+		\cmidrule(rl){3-4}\cmidrule(ll){5-10}
+	\textbf{Frame} 	&\textbf{Nature}		&M. 		&Z.	&Hp		&Atk 	&Def 	&SpA		&SpD		&Spe		\\
+		\midrule
+			1020 	&relaxed		&\female	&\female 	&20		&13		&11		&10		&10		&9		\\
+			1021 	&gentle		&\male 	&\male 		&21		&12		&9		&10		&11		&10		\\
+			1022 	&naughty		&\male	&\male		&21 		&13		&10		&10		&9		&10		\\
+			1023 	&bashful	 	&\female	&\male	  	&21		&12		&10		&10		&10		&9		\\
+			1024 	&timid		&\male	&\male		&20		&10		&10		&10		&11		&11		\\
+			1025 	&careful		&\male 	&\male 		&21		&12		&11		&9		&12		&10		\\
+		\rowcolor{Gray}
+			1026 	&naughty		&\male 	&\male 		&21		&14		&11		&11		&9		&10		\\
+			1027 	&quiet		&\male 	&\female 	&21		&13		&11		&11		&10		&8		\\
+			1028 	&naive		&\male	&\female		&20		&12		&10		&10		&9		&9		\\
+			1029 	&docile		&\male	&\male		&20		&12		&11		&10		&10		&9		\\
+			1030 	&hardy		&\male 	&\male 		&20		&12		&10		&11		&11		&9		\\
+			1031 	&hardy		&\male 	&\male 		&20		&13		&11		&11		&10		&9		\\
+			1032 	&gentle		&\male 	&\female 	&20		&13		&9		&11		&12		&9		\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Das richtige \textsc{Hydropi} hat stets 21 HP und ist von männlichem Geschlecht. Das \textsc{Zigzacks} ist ebenfalls männlich. Nach vielen Resets entwickelt man ein gutes Gefühl für das richtige Timing. Deshalb üben, üben, üben!
+
+%%% END SUBSECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Weitere Hinweise zu \textsc{Smaragd}}
+\label{sec:additional_infos}
+Bevor es endgültig zum nächsten Kapitel geht, noch einige interessante Infos zum Spiel:
+\begin{itemize}
+\item Es kann allen Spinnern im Spiel ausgewichen werden (siehe dazu Anhang x.x)
+\item Potentielle Zeitfresser in der dritten Spielgeneration (Rubin, Saphir, Smaragd) sind die Lauf- und insbesondere Fahrradrouten, die möglichst gut geübt werden müssen
+\item Kursorstellungen werden in den Menüs niemals zurückgesetzt (vorausgesetzt das Spiel wird nicht erneut geladen)
+\item Fallen die Kraftpunkte auf 1/3 oder darunter, werden Wasserattacken um 50\% verstärkt
+\item Ein angeschlossener Wireless Adapter verringert die Zeit bis man nach einem Soft Reset wieder ins Spiel gelangt um etwa 2 Sekunden
+\end{itemize}
+}
+%%% END SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Der Run}{
+\subsection{Spieleinstellung}
+Zu Beginn solltest du auf jeden Fall den bisherigen Spielstand löschen. Drücke dazu im Titelbildschirm auf \textsc{Oben}, \textsc{Select} und \textsc{B} gleichzeitig.
+
+Bevor das eigentliche Spiel und der Timer gestartet wird, können bereits günstige Einstellungen vorgenommen werden. Klicke dazu auf „Optionen“ und ändere folgende Menüpunkte:
+\begin{itemize}
+\item Text speed: \textsc{Fast}
+\item Battle scenes: \textsc{Off}
+\item Battle style: \textsc{Set}
+\item L/A (optional)
+\end{itemize}
+}
+
+\subsection{Split 1}
+\paragraph{Neues Spiel}
+Wähle das Mädchen aus. Der Grund liegt im zweiten Kampf gegen den Rivalen, der sich gegen den männlichen Part sicherer gestaltet als gegen den weiblichen. Bei der Benennung des Spielcharakters wähle einen beliebigen Namen mit einem Buchstaben.
+\paragraph{Wurzelheim}
+Klicke dich durch die Dialoge, stelle dir Uhr ein, begib dich in das Haus deines Rivalen und laufe anschließend Richtung Route 101. Dort speicherst du vor Professor Bricks Tasche und führst die Softreset-Prozedur durch, um an das richtige Hydropi zu gelangen. Zur Erinnerung: Das richtige Geschöpf hat 21 KP und ist männlich. Siehe dazu erneut \ref{sec:correct_mudkip}.
+\paragraph{Route 101 -- Route 103}
+
+
+%%% END SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{appendix}
+\section{A}
+\end{appendix}
+
+
+\end{document}
