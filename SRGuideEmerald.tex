@@ -298,14 +298,79 @@ Dort angekommen geht es direkt nördlich in den Supermarkt für den ersten Einka
 Besuche kurz das Pokécenter, um einen Spawnpunkt zu setzen und gehe daraufhin in die örtliche Arena, um sich das Fangtutorial zeigen zu lassen. Verlasse Petalburg über den westlichen Ausgang in Richtung Route 103.\\
 
 \paragraph{Route 103, Petalburg Forest}
-Umlaufe die Grasflächen bis zum obersten nördlichen Feld. Stell dich in das obere Gras der unteren Fläche, setze Trank und Schutz ein. Betrete den Wald ohne die Trainerin vor dem Eingang herauszufordern. Siehe Abb. Y für den genauen Laufpfad der Route 103.
+Umlaufe die Grasflächen bis zum obersten nördlichen Feld. Stell dich in das obere Gras der unteren Fläche, setze Trank und Schutz ein. Betrete den Wald ohne die Trainerin vor dem Eingang herauszufordern. Siehe Abb. Y für den genauen Laufpfad der Route 103.\\
+Weiche dem ersten Gegner mit der Manip-Technik\footnote{Siehe Anhang x} aus. Fordere anschließende den Aqua Grunt aus (siehe Tabelle \ref{tab:aquagrunt}).
+\begin{table}[htbp]
+	\caption{Aqua Grunt}
+	\label{tab:aquagrunt}
+	\centering
+	\begin{tabular}{lllccl}
+		%Ort, Pokemon, Lv2...5...10
+		\toprule 
+		&&&\multicolumn{2}{c}{\textbf{Damage}}&\\
+		\cmidrule(rl){4-5}
+		\textbf{Trainer}&\textbf{Pokemon}&\textbf{Moveset}&Min&Max&\textbf{Fight}\\ 
+		\midrule
+		Aqua Grunt&Poochyena&Tackle&5\,(\SI{94}{\percent})&6\,(\SI{6}{\percent})&\textsc{Tackle} a lot\\
+		&&+1&6\,(\SI{19}{\percent})&8\,(\SI{6}{\percent})&\\ 
+		&&+2&8\,(\SI{31}{\percent})&10\,(\SI{6}{\percent})&\\
+		&&+3&10\,(\SI{44}{\percent})&12\,(\SI{6}{\percent})&\\
+		&&+4&11\,(\SI{6}{\percent})&14\,(\SI{6}{\percent})&\\
+		&&Howl&--&--&\\
+		&&Sand Attack&--&--&\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+Manipuliere den nächsten Trainer ebenfalls und verlasse den Wald über den nördlichen Ausgang. Weiche anschließend den zwei Trainern unter dem Steg aus und betrete Rustboro City.
 
-% Nochmal in der Tabelle den austeilbaren Schaden hinzufügen, neben den eintreffenden.
+\paragraph{Rustboro City}
+Gehe nun auf direktem Wege in die örtliche Arena. Laufe durch den linken Eingang ins Labyrinth und spreche den Teenager von hinten an. Laufe oben herum und trete gegen den zweiten Teenager an. Zu guter Letzt wird der Wanderer besiegt und es folgt der Kampf gegen die Arenaleiterin. Sollten die KP bei unter 22 liegen, heile das Mudkip mit einem Trank. Für alle Kampfdetails, siehe Tabelle x.
+\begin{table}[htbp]
+	\caption{Rustboro Arena Fight Details}
+	\label{tab:rustboroarena}
+	\centering
+	\begin{tabular}{lllccl}
+		%Ort, Pokemon, Lv2...5...10
+		\toprule 
+		&&&\multicolumn{2}{c}{\textbf{Damage}}&\\
+		\cmidrule(rl){4-5}
+		\textbf{Trainer}&\textbf{Pokemon}&\textbf{Moveset}&Min&Max&\textbf{Fight}\\ 
+		\midrule
+		Youngster Josh&Geodude&Tackle&5\,(\SI{18}{\percent})&7\,(\SI{25}{\percent})&$5 \times$ \textsc{Mud-Slap}\\
+		% Nächster Trainer
+		Youngster Tommy&Geodude&--&--&--&\textsc{Aqua Gun} (2x Select)\\
+		&Geodude&--&--&--&\textsc{Aqua Gun}\\
+		% Nächster Trainer
+		Hiker Marc&Geodude&--&--&--&\textsc{Aqua Gun}\\
+		&Geodude&--&--&--&\textsc{Aqua Gun}\\
+		% Nächster Trainer
+		Leader Roxanne&Geodude&--&--&--&\textsc{Aqua Gun}\\
+		&Geodude&--&--&--&\textsc{Aqua Gun}\\
+		&Nosepass&Tackle&5\,(\SI{94}{\percent})&6\,(\SI{6}{\percent})&(if HP<31 \textsc{Growl})\\
+		&&Rock Tomb&13\,(\SI{19}{\percent})&16\,(\SI{6}{\percent})&3-5$\times$ \textsc{Aqua Gun}\\
+		&&-1&10\,(\SI{38}{\percent})&12\,(\SI{6}{\percent})&\\
+		&&Harden&--&--&\\
+		&&Block&--&--&\\	
+		\bottomrule
+	\end{tabular}
+\end{table}
 
-%%% END SECTION 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Split 2}
+\paragraph{Abra Manip and Saving Peeko}
+
 
 \begin{appendix}
-\section{A}
+\section{Trainer Manipulationen}
+Dieser Abschnitt ist zu größten Teilen dem "Gen 3 spinner mechanics" Pastebin Dokument von Exarion entnommen.\\
+Spinner sind NPCs, die an Ort und Stelle zufällig rotieren. Spinner halten vier Werte (eine Kombination aus UP, DOWN, LEFT, RIGHT), welche das Rotationsverhalten steuern. Mit jedem neuen Würfelwurf, wird eines der 4 Werte ausgelost. Beispiel: Eine Spielfigur mit UP, UP, DOWN, DOWN wird in \SI{50}{\percent} der Fälle nach oben und mit \SI{50}{\percent} der Fälle nach unten rotieren.
+\subsection{Renn-Manipulation}
+Da der Rennmodus den Spinner beeinflussen kann und dessen Clock zurücksetzt, kann dieser Umstand gezielt genutzt werden. Man kann einige Spinner sehr einfach passieren, in dem man nur bis zu einem bestimmten Feld rennt und anschließend am Spinner vorbeigeht. Als Beispiel: Möchte man einen Spinner rechts passieren, kann man bis zum Feld 1D, 1R rennen und ihn zwingen nach unten zu sehen. Anschließend läuft man in normaler Geschwindigkeit an ihm vorbei.\\
+Noch schneller ist die Rennen-Rad-Bewegung, erfordert aber einiges an Übung.
+\subsection{Menü Manipulation}
+Erzielt man mit der Renn- und Radmanipulation keine zufriedenstellenden Ergebnisse, kann stattdessen auf die Pausenmanipulation zurückgegriffen werden.\\
+Wird nach einem potentiellen Spin-Frame das Startmenü geöffnet, wird der Timer zurückgesetzt und man kann vorbeiziehen soweit der Spinner nicht die kritische Richtung blickt.
+\subsection{Taschen Manipulation}
+Öffnet man die Tasche, friert es den Spinner für 31 Frames ein und man kann in sicherer Weise passieren. Allerdings benötigt das Taschenöffnen etwa 2 Sekunden, was eine etwas zeitaufwändigere Manipulation darstellt.
 \end{appendix}
 
 
